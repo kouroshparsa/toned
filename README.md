@@ -4,7 +4,7 @@ toned
 *toned* is a python package to allow recursive text file search with boolean operations
 It is NOT a lexer as a lexical analyzer is much more complex.
 *toned* applies a layer on top of search keywords to convert them into regular expressions.
-This way, users who are not good w ith regex can search within files.
+This way, users who are not good with regex can search within files.
 *toned* has been unit-tested with python 2.7.
 
 How to install:
