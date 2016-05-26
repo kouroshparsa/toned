@@ -1,7 +1,7 @@
 toned
 ==========
 
-*toned* is a python package to allow recursive text file search with boolean operations
+*toned* is a python package to allow parallelized recursive text file search with boolean operations
 It is NOT a lexer as a lexical analyzer is much more complex.
 *toned* applies a layer on top of search keywords to convert them into regular expressions.
 This way, users who are not good with regex can search within files.
@@ -11,7 +11,7 @@ How to install:
 `pip install toned`
 
 
-Examples:
+**Examples:**
 ```
 from toned import finder
 DATA_DIR = '/tmp'
@@ -46,8 +46,10 @@ print finder.find_in_dir(keywords)
 Limitations:
 Some punctuations are not escaped and therefore after converting to regex puntuations might be problematic.
 Please report issues on github to be addressed.
+You cannot use this package for seaching through pdf files.
+The fastest pythonic way to search through pdf files is to first convert them into text files using PdfMiner and then use this package to  search through them.
 
-Main method signatures:
+**Main method signatures:**
 ```
 def find_in_files(keyword, files, multiline=False,\
                   ignore_case=True, worker_count=WORKER_COUNT):
@@ -78,3 +80,5 @@ def find_in_dir(keyword, root_dir, multiline=False,\
         and each value is a list of strings (matched sentences)
     """
 ```
+
+Lastly, please feel free to report bugs or ask for features.
