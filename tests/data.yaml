@@ -1,0 +1,25 @@
+close_ind:
+    - {"val": "(123)+1", "start":0, "end":4}
+    - {"val": "1+(1+(2+2))+1", "start":2, "end":10}
+regex_test:
+    - {"keyword": "roast", "sentence": "here is a roast", "match": True}
+    - {"keyword": "roast", "sentence": "it is roasted", "match": False}
+    - {"keyword": "cold and beer", "sentence": "I have a cold fresh beer", "match": True}
+    - {"keyword": "cold and beer", "sentence": "beer is best cold", "match": True}
+    - {"keyword": "cold and beer", "sentence": "beer is not colder", "match": False}
+    - {"keyword": "black and (benz or bmw)", "sentence": "I have a black bmw", "match": True}
+    - {"keyword": "black and (benz or bmw)", "sentence": "I have a black benz", "match": True}
+    - {"keyword": "black and (benz or bmw)", "sentence": "I have a black fararri", "match": False}
+    - {"keyword": "black and (benz or bmw)", "sentence": "I have a blue bmw", "match": False}
+    - {"keyword": "black and (benz or bmw)", "sentence": "bmw black", "match": True}
+    - {"keyword": "black and (benz or bmw)", "sentence": "black bmwz", "match": False}
+    - {"keyword": "not blue", "sentence": "something", "match": True}
+    - {"keyword": "not blue", "sentence": "something blue", "match": False}
+    - {"keyword": "not blue", "sentence": "blue something", "match": False}
+    - {"keyword": "not blue", "sentence": "not something", "match": True}
+    - {"keyword": "small.cell and not non.small", "sentence": "found small-cell", "match": True}
+    - {"keyword": "not non.small.cell and small.cell", "sentence": "found small-cell", "match": True}
+    - {"keyword": "small.cell and not non.small", "sentence": "found non-small-cell", "match": False}
+    - {"keyword": "ADO and small.cell and not non.small", "sentence": "found small-cell. See ADO", "match": True}
+    - {"keyword": "ADO and small.cell and not non.small", "sentence": "found non-small-cell. See ADO", "match": False}
+    - {"keyword": "ADO and small.cell and not non.small", "sentence": "found small-cell.", "match": False}
