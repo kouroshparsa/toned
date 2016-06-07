@@ -6,7 +6,7 @@ import re
 from multiprocessing import Pool
 import subprocess
 import os
-import fnmatch
+import re
 import traceback
 WORKER_COUNT = 20
 
@@ -194,12 +194,12 @@ def find_in_files(keyword, files, multiline=False,\
 
 def find_in_dir(keyword, root_dir, multiline=False,\
                 ignore_case=True, worker_count=WORKER_COUNT,\
-                name_pattern='*'):
+                name_pattern='.*'):
     """
     @keyword: string
     @root_dir: the directory to start the recursive search from
-    @name_pattern: string pattern for matching the filenames
-        default is '*' which means any file
+    @name_pattern: regex pattern for matching the filenames
+        default is '.*' which means any file
     @ignore_case: boolean
     @multiline: boolean
     @worker_count: int- the number of processes used for parallel searching
@@ -209,7 +209,7 @@ def find_in_dir(keyword, root_dir, multiline=False,\
     file_paths = []
     for root, dirs, files in os.walk(root_dir):
         for filename in files:
-            if fnmatch.fnmatch(filename, name_pattern):
+            if re.match(name_pattern, filename):
                 file_paths.append(os.path.join(root, filename))
 
     file_paths = file_paths

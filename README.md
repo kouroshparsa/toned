@@ -18,12 +18,17 @@ DATA_DIR = '/tmp'
 keywords = '(word1 or word2) and not word3'
 print finder.find_in_dir(keywords,\
 	DATA_DIR, multiline=True,\
-        name_pattern='*.txt')
+        name_pattern=r'.*\.text$')
 ```
 Output:
 ```
 {'/tmp/sample1.txt': ['this is word1', 'this is word2'],
  '/tmp/sample2.txt': ['word1 followed by word2']}
+```
+
+If you want to match filenames that end with xml or text, then you can use:
+```
+name_pattern='.*\.(text|xml)$'
 ```
 
 If you want to specify the file:
@@ -67,12 +72,12 @@ def find_in_files(keyword, files, multiline=False,\
 ```
 def find_in_dir(keyword, root_dir, multiline=False,\
                 ignore_case=True, worker_count=WORKER_COUNT,\
-                name_pattern='*'):
+                name_pattern='.*'):
     """
     @keyword: string
     @root_dir: the directory to start the recursive search from
-    @name_pattern: string pattern for matching the filenames
-        default is '*' which means any file
+    @name_pattern: REGEX pattern for matching the filenames
+        default is '.*' which means any file
     @ignore_case: boolean
     @multiline: boolean
     @worker_count: int- the number of processes used for parallel searching
