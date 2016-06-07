@@ -28,7 +28,7 @@ Output:
 
 If you want to match filenames that end with xml or text, then you can use:
 ```
-name_pattern='.*\.(text|xml)$'
+name_pattern=r'.*\.(text|xml)$'
 ```
 
 If you want to specify the file:
