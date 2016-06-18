@@ -43,6 +43,7 @@ def __get_and_regex(val1, val2):
         val2 = '(%s)' % val2
     return '{}{}'.format(val1, val2)
 
+
 def __get_or_regex(val1, val2):
     """
     @val1, @val2: str
@@ -51,6 +52,7 @@ def __get_or_regex(val1, val2):
     val1 = __get_regex(val1)
     val2 = __get_regex(val2)
     return '{}|{}'.format(val1, val2)
+
 
 def __get_regex(val):
     """
@@ -169,6 +171,9 @@ def find_in_files(keyword, files, multiline=False,\
     returns a dict where the keys are the path of the files that matched
         and each value is a list of strings (matched sentences)
     """
+    if len(files) < 1:
+        return {}
+
     regex = get_regex(keyword)
     try:
         re.compile(regex) # validate it
